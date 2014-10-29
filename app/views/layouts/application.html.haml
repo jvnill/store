@@ -8,4 +8,8 @@
 
     = csrf_meta_tags
 
-  %body= yield
+  %body
+    - if current_order
+      #cart= render 'orders/cart'
+
+    %div= yield

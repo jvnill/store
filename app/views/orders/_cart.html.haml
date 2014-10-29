@@ -1,0 +1,14 @@
+%table
+  %tbody
+    - current_order.order_items(includes: :product).each do |item|
+      %tr
+        %td= item.product.name
+        %td= item.quantity
+        %td= item.product.price
+        %td= item.product.price * item.quantity
+
+  %tfoot
+    %tr
+      %td{ colspan: 3 } Total
+      %td= current_order.total
+
