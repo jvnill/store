@@ -1,0 +1,5 @@
+= link_to 'All products', products_path
+
+%h2= @product.name
+.description= simple_format @product.description
+.price= number_to_currency @product.price

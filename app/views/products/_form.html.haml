@@ -1,0 +1,21 @@
+= form_for @product do |f|
+  %div
+    %label Name
+    = f.text_field :name
+    - if @product.errors[:name].present?
+      .error= @product.errors[:name].uniq.to_sentence
+
+  %div
+    %label Description
+    = f.text_area :description
+    - if @product.errors[:description].present?
+      .error= @product.errors[:description].uniq.to_sentence
+
+  %div
+    %label Price
+    = f.text_field :price
+    - if @product.errors[:price].present?
+      .error= @product.errors[:price].uniq.to_sentence
+
+  %div
+    = f.submit

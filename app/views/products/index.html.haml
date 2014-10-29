@@ -1,0 +1,18 @@
+- if can?(:create, Product)
+  = link_to 'New Product', new_product_path
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Price
+
+  %tbody
+    - @products.each do |product|
+      %tr[product]
+        %td= product.name
+        %td= number_to_currency product.price
+        %td
+          = link_to 'Add to cart'
+          = link_to 'Edit', [:edit, product] if can?(:edit, product)
+          = link_to 'Destroy', product, method: :delete, remote: true, data: { confirm: 'Are you sure?' } if can?(:destroy, product)
