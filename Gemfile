@@ -4,6 +4,7 @@ gem 'rails', '4.1.6'
 
 gem 'clearance'
 gem 'coffee-rails', '~> 4.0.0'
+gem 'haml-rails'
 gem 'jquery-rails'
 gem 'pg'
 gem 'sass-rails', '~> 4.0.3'
