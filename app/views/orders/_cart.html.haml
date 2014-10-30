@@ -10,5 +10,6 @@
   %tfoot
     %tr
       %td{ colspan: 3 } Total
-      %td= current_order.total
-
+      %td
+        = current_order.total
+        = link_to 'Checkout', checkout_path, method: :post
