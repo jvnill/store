@@ -21,7 +21,7 @@ class OrdersController < ApplicationController
   end
 
   def mark_paid
-    order = Order.find(params[:order_id])
+    order = current_user.orders.find(params[:order_id])
     order.update_attributes(status: 'paid', reference_number: params[:reference])
   end
 

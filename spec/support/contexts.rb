@@ -3,3 +3,9 @@ RSpec.shared_context 'admin logged in' do
 
   before { sign_in_as(admin) }
 end
+
+RSpec.shared_context 'buyer logged in' do
+  let!(:buyer) { create(:user, role: 'buyer') }
+
+  before { sign_in_as(buyer) }
+end

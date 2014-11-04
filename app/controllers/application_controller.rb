@@ -11,13 +11,4 @@ class ApplicationController < ActionController::Base
 
     @current_order ||= Order.draft.where(user_id: current_user.id).first_or_create
   end
-
-  private
-
-  def authorize_admin
-    return if can?(:manage, :all)
-
-    flash[:error] = 'You have no access to the requested page'
-    redirect_to products_path
-  end
 end
