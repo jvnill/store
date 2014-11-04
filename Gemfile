@@ -24,6 +24,11 @@ group :development do
 end
 
 group :test do
-  gem 'rspec-rails'
+  gem 'codeclimate-test-reporter', require: nil
+  gem 'database_cleaner'
   gem 'factory_girl_rails'
+  gem 'guard'
+  gem 'guard-rspec'
+  gem 'shoulda-matchers', require: nil
+  gem 'rspec-rails'
 end
