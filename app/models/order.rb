@@ -8,7 +8,7 @@ class Order < ActiveRecord::Base
   validates :user, presence: true
   validates :status, inclusion: { in: STATUSES }
 
-  before_create :mark_as_draft
+  before_validation :mark_as_draft
 
   scope :draft,   -> { where(status: 'draft') }
   scope :pending, -> { where(status: 'pending') }
@@ -25,6 +25,6 @@ class Order < ActiveRecord::Base
   private
 
   def mark_as_draft
-    self.status = 'draft'
+    self.status ||= 'draft'
   end
 end

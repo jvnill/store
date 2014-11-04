@@ -15,6 +15,6 @@ class Ability
   end
 
   def buyer_permissions(user_id)
-    can :manage, Order, user_id: user.id
+    can :manage, Order, user_id: user_id
   end
 end

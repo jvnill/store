@@ -5,13 +5,13 @@ class User < ActiveRecord::Base
 
   has_many :orders
 
-  validates :role, presence: true, inclusion: { in: ROLES }
+  validates :role, inclusion: { in: ROLES }
 
-  before_create :set_role
+  before_validation :set_role
 
   private
 
   def set_role
-    self.role = 'buyer'
+    self.role ||= 'buyer'
   end
 end
