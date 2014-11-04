@@ -1,5 +1,9 @@
 # Store App
 
+[![Code Climate](https://codeclimate.com/github/jvnill/store/badges/gpa.svg)](https://codeclimate.com/github/jvnill/store)
+[![Test Coverage](https://codeclimate.com/github/jvnill/store/badges/coverage.svg)](https://codeclimate.com/github/jvnill/store)
+[![Build Status](https://travis-ci.org/jvnill/store.svg?branch=master)](https://travis-ci.org/jvnill/store)
+
 To be used in conjunction with the [Bank App](https://github.com/jvnill/bank)
 
 ## Setup
