@@ -8,11 +8,13 @@ To be used in conjunction with the [Bank App](https://github.com/jvnill/bank)
 
 ## Setup
 
-1 Run the bank app and create a connected app.
-2 Download the certificate of the connected app and save it to Rails.root/certs/bank_key.pem
-3 Take note of the connected app id and set it to the BANK_CONNECTED_APP_ID constant
+1. Run the bank app and create a connected app.
+2. Download the certificate of the connected app and save it to Rails.root/certs/bank_key.pem
+3. Take note of the connected app id and set it to the BANK_CONNECTED_APP_ID constant
 
-## Change the following constants in `config/initializers/constants.rb`
+## Update Constants
+
+Change the following constants in `config/initializers/constants.rb`
 
 GATEWAY_PAYMENT_URL = change the host to point to the url of the bank app
 GATEWAY_VERIFY_URL = change the host to point to the url of the bank app
