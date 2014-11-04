@@ -1,28 +1,15 @@
-== README
+# Store App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+To be used in conjunction with the [Bank App](https://github.com/jvnill/bank)
 
-Things you may want to cover:
+## Setup
 
-* Ruby version
+1 Run the bank app and create a connected app.
+2 Download the certificate of the connected app and save it to Rails.root/certs/bank_key.pem
+3 Take note of the connected app id and set it to the BANK_CONNECTED_APP_ID constant
 
-* System dependencies
+## Change the following constants in `config/initializers/constants.rb`
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+GATEWAY_PAYMENT_URL = change the host to point to the url of the bank app
+GATEWAY_VERIFY_URL = change the host to point to the url of the bank app
+BANK_CONNECTED_APP_ID = change to the id of the created connected_app of the bank app

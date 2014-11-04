@@ -1,0 +1,4 @@
+test:
+  adapter: postgresql
+  database: store_test
+  username: postgres
