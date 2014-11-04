@@ -9,6 +9,12 @@
     = csrf_meta_tags
 
   %body
+    - if signed_in?
+      = link_to 'Logout', sign_out_path, method: :delete
+
+    - else
+      = link_to 'Login', sign_in_path
+
     - if current_order
       #cart= render 'orders/cart'
 

@@ -1,5 +1,8 @@
 class OrdersController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: :mark_paid
+
   before_action :authorize
+  before_action :verify_transaction, only: :mark_paid
 
   def add
     product = Product.find(params[:product_id])
@@ -15,6 +18,11 @@ class OrdersController < ApplicationController
     current_order.update_column :status, 'pending'
 
     redirect_to "#{GATEWAY_PAYMENT_URL}?app_id=#{BANK_CONNECTED_APP_ID}&items=#{encrypted_data}"
+  end
+
+  def mark_paid
+    order = Order.find(params[:order_id])
+    order.update_attributes(status: 'paid', reference_number: params[:reference])
   end
 
   private
@@ -33,8 +41,20 @@ class OrdersController < ApplicationController
 
   def encrypted_data
     public_key = OpenSSL::PKey::RSA.new(BANK_PUBLIC_KEY)
-    encrypted  = public_key.public_encrypt(current_order_items.merge(order_id: current_order.id).to_param)
+    encrypted  = public_key.public_encrypt(current_order_items.merge(callback_data: { order_id: current_order.id }).to_param)
 
     CGI.escape Base64.encode64(encrypted)
+  end
+
+  def verify_transaction
+    return if transaction_verified?
+
+    render text: 'Invalid request', status: 403
+  end
+
+  def transaction_verified?
+    response = HTTParty.post(GATEWAY_VERIFY_URL, body: params.slice(:random, :reference))
+
+    response.success?
   end
 end
