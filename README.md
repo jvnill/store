@@ -11,6 +11,7 @@ To be used in conjunction with the [Bank App](https://github.com/jvnill/bank)
 1. Run the bank app and create a connected app.
 2. Download the certificate of the connected app and save it to Rails.root/certs/bank_key.pem
 3. Take note of the connected app id and set it to the BANK_CONNECTED_APP_ID constant
+4. Run rake db:seed to create an admin (admin@store.com/password)
 
 ## Update Constants
 
